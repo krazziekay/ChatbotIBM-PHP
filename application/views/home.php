@@ -64,7 +64,7 @@
                 success: function (response) {
                     let result = JSON.parse(response);
                     $('.loading').remove();
-                    $('#chat-box').append( $('<div class="bubble you" id="loading">' + result.output.text + '</div>') );
+                    $('#chat-box').append( $('<div class="bubble you">' + result.output.text + '</div>') );
                     $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
 
                     if(result.output.nodes_visited[0] === 'Anything else') {
@@ -78,7 +78,15 @@
         }
 
         function saveToLocalDB(question) {
-            console.log("Save into db ", question);
+            $.ajax({
+                url: '<?php echo base_url("chatbot-system/faq/addUnanswered")?>',
+                dataType: 'JSON',
+                header: {
+                    'Content-Type' : 'application/x-www-form-urlencoded'
+                },
+                method: 'POST',
+                data: {question : question}
+            })
         }
 
     })();

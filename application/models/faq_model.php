@@ -45,12 +45,18 @@ class Faq_Model extends My_Model
 
 	public function getunanswered()
 	{
-		$query = "SELECT
-                      *
-                    FROM tbl_faq 
-                    WHERE answer = ''
-                    AND category_id = ''";
+		$query = "SELECT * FROM tbl_faq WHERE answer IS NULL AND category_id IS NULL";
         return $this->query($query);
+    }
+
+    public function addUnansweredQuestions($question)
+    {
+        return $this->db->insert('tbl_faq', array(
+            'question' => $question,
+            'category_id' => NULL,
+            'answer' => NULL,
+            'status' => 'ACTIVE'
+        ));
     }
 }
 ?>

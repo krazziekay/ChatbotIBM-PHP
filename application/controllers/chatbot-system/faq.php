@@ -30,6 +30,14 @@ class Faq extends My_Controller
         $this->render();
     }
 
+    public function addUnanswered()
+    {
+        $question = ($this->input->post('question'));
+        $result = $this->faq->addUnansweredQuestions($question);
+        return $result;
+    }
+
+
     public function create()
     {
         $id = segment(4);
