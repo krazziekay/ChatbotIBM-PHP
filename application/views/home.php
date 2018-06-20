@@ -10,7 +10,9 @@
             <div class="right">
                 <div class="top"><span><strong>Chatbot FAQ</strong></div>
                 <div class="chat" id="chat-box">
-
+                    <div class="bubble you">
+                        Hello, this is VU's personal bot. How may I help you?
+                    </div>
                 </div>
 
                 <div class="write">
@@ -64,11 +66,19 @@
                     $('.loading').remove();
                     $('#chat-box').append( $('<div class="bubble you" id="loading">' + result.output.text + '</div>') );
                     $('#chat-box').scrollTop($('#chat-box')[0].scrollHeight);
+
+                    if(result.output.nodes_visited[0] === 'Anything else') {
+                        saveToLocalDB(text);
+                    }
                 },
                 error: function (error) {
                     console.log("Error", error);
                 }
             });
+        }
+
+        function saveToLocalDB(question) {
+            console.log("Save into db ", question);
         }
 
     })();
