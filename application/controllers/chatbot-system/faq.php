@@ -33,8 +33,18 @@ class Faq extends My_Controller
     public function addUnanswered()
     {
         $question = ($this->input->post('question'));
-        $result = $this->faq->addUnansweredQuestions($question);
-        return $result;
+
+
+        $alreadyExists =  $this->db->where('LOWER(question)', "'".strtolower($question)."'", FALSE)->get('tbl_faq')->num_rows();
+
+        if($alreadyExists < 1) {
+            $result = $this->faq->addUnansweredQuestions($question);
+            return $result;
+        }
+        else {
+            return 0;
+        }
+
     }
 
 
