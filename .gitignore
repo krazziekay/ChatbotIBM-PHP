@@ -1,0 +1,10 @@
+.idea
+/nbproject/
+/nbproject/private/
+/assets/phpthumb/cache/*
+/assets/timthumb/cache/*
+assets/img/Thumbs.db
+/application/config/development/*
+/application/config/production/*
+*.db
+/uploads/.tmb/
