@@ -35,6 +35,7 @@ class Category extends My_Controller
                 } else {
                     $condition = array('id' => $id);
                     $res = $this->category->save($post, $condition);
+
                 }
 
                 $res ? set_flash('msg', 'Data saved') : set_flash('msg', 'Data could not be saved');
@@ -71,32 +72,24 @@ class Category extends My_Controller
         $post = $_POST;
 
         $this->load->library('restrict_delete');
-        $params = "tbl_banner.category_id|tbl_content.category_id|tbl_gallery.category_id";
-        if(isset($post) && !empty($post)) {
+       if(isset($post) && !empty($post)) {
             $selected_ids = $post['selected'];
             $deleted = 0;
             foreach($selected_ids as $selected_id){
-                if($this->restrict_delete->check_for_delete($params, $selected_id)) {
                     $res = $this->category->delete(array('id' => $selected_id));
                     if ($res) {
                         $deleted++;
-                    }
                 }
             }
 
             $deleted ? set_flash('msg', $deleted . ' out of ' . count($selected_ids) . ' data deleted successfully') : set_flash('msg', 'Data could not be deleted');
 
-        } else {
+        }
+        else {
             $id = segment(4);
-            if($this->restrict_delete->check_for_delete($params, $id)) {
                 $res = $this->category->delete(array('id' => $id));
-
                 $success_msg = $res ? 'Data deleted' : 'Error in deleting data';
-            } else {
-                $msg = 'This data cannot be deleted. It is being used in system.';
-            }
-
-            $success_msg ? set_flash('msg', $success_msg) : set_flash('msg', $msg);
+            set_flash('msg', $success_msg);
         }
 
         redirect(BACKENDFOLDER.'/category');
