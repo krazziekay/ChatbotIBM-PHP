@@ -199,6 +199,7 @@ class Faq extends My_Controller
     /**
      * This function makes an ajax call to send the data to the IBM Watson service
      * @param $post
+     * @param $category
      * @return bool
      */
     public function addEditDialogs($post, $category) {
@@ -295,8 +296,16 @@ class Faq extends My_Controller
                 $dialogURL='https://gateway.watsonplatform.net/assistant/api/v1/workspaces/'.$this->workspace.'/dialog_nodes?version=2018-02-16';
             }
             else {
+
                 $dialogURL='https://gateway.watsonplatform.net/assistant/api/v1/workspaces/'.$this->workspace.'/dialog_nodes/'.$dialog_node.'?version=2018-02-16';
+
+                $output = $dialogExists->output->text->values;
+                array_push($output, $post['answer']);
+
+                $output = (object)array('text' => (object)array('values' => $output, 'selection_policy' => 'sequential') );//this is the answer
+
             }
+
 
             $params2 = json_encode( array(
                 'dialog_node' => $dialog_node,
@@ -304,6 +313,7 @@ class Faq extends My_Controller
                 'output' => $output,
                 'title' => $dialog_node
             ) );
+
             $ch2 = curl_init();
             curl_setopt($ch2, CURLOPT_URL, $dialogURL);
             curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
