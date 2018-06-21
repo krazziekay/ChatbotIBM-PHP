@@ -210,7 +210,7 @@ class Faq extends My_Controller
         $output = (object)array('text' => $post['answer']);//this is the answer
 
         //First check if the intent is already present or not
-        $intentURL='https://gateway.watsonplatform.net/assistant/api/v1/workspaces/'.$this->workspace.'/intents/'.$intent.'?version=2018-02-16';
+        $intentURL='https://gateway.watsonplatform.net/assistant/api/v1/workspaces/'.$this->workspace.'/intents/'.$intent.'?version=2018-02-16&export=true';
         $chIntent = curl_init();
         curl_setopt($chIntent, CURLOPT_URL, $intentURL);
         curl_setopt($chIntent, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -266,7 +266,20 @@ class Faq extends My_Controller
             }
 
         }
-        else {
+        else {//This means intent already exists
+
+            //Get the current intent details
+            $intentEditURL='https://gateway.watsonplatform.net/assistant/api/v1/workspaces/'.$this->workspace.'/intents/'.$intent.'/examples?version=2018-02-16';
+            $chUpdatedIntent = curl_init();
+            curl_setopt($chUpdatedIntent, CURLOPT_URL, $intentEditURL);
+            curl_setopt($chUpdatedIntent, CURLOPT_CUSTOMREQUEST, 'POST');
+            curl_setopt($chUpdatedIntent, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($chUpdatedIntent, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
+            curl_setopt($chUpdatedIntent, CURLOPT_POSTFIELDS, json_encode( (object)array('text' => $example) ) );
+            curl_setopt($chUpdatedIntent, CURLOPT_USERPWD, "$this->username:$this->password");
+            $updateIntent = json_decode(curl_exec($chUpdatedIntent));
+            curl_close($chUpdatedIntent);
+
             //First check if the dialog is already present or not
             $dialogExistURL='https://gateway.watsonplatform.net/assistant/api/v1/workspaces/'.$this->workspace.'/dialog_nodes/'.$dialog_node.'?version=2018-02-16';
             $chDialogIntent = curl_init();
