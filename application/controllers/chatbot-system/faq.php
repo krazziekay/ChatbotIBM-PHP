@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @property string username
  * @property string password
