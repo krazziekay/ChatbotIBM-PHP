@@ -34,6 +34,7 @@ class Home extends CI_Controller
         curl_setopt($ch1, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
         curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch1, CURLOPT_POST, true);
+        curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch1, CURLOPT_POSTFIELDS, $params1);
         curl_setopt($ch1, CURLOPT_USERPWD, "$this->username:$this->password");
         $result = curl_exec($ch1);
