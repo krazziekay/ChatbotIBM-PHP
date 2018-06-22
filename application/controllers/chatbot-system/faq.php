@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @property string username
  * @property string password
@@ -215,6 +216,7 @@ class Faq extends My_Controller
         curl_setopt($chIntent, CURLOPT_URL, $intentURL);
         curl_setopt($chIntent, CURLOPT_CUSTOMREQUEST, 'GET');
         curl_setopt($chIntent, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($chIntent, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($chIntent, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
         curl_setopt($chIntent, CURLOPT_USERPWD, "$this->username:$this->password");
         $intentExists = json_decode(curl_exec($chIntent));
@@ -237,6 +239,7 @@ class Faq extends My_Controller
             curl_setopt($ch1, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
             curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch1, CURLOPT_POST, true);
+            curl_setopt($ch1, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($ch1, CURLOPT_POSTFIELDS, $params1);
             curl_setopt($ch1, CURLOPT_USERPWD, "$this->username:$this->password");
             $intentResult=curl_exec ($ch1);
@@ -254,6 +257,7 @@ class Faq extends My_Controller
             curl_setopt($ch2, CURLOPT_URL, $dialogURL);
             curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch2, CURLOPT_POST, true);
+            curl_setopt($ch2, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($ch2, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
             curl_setopt($ch2, CURLOPT_POSTFIELDS, $params2);
             curl_setopt($ch2, CURLOPT_USERPWD, "$this->username:$this->password");
@@ -274,6 +278,7 @@ class Faq extends My_Controller
             curl_setopt($chUpdatedIntent, CURLOPT_URL, $intentEditURL);
             curl_setopt($chUpdatedIntent, CURLOPT_CUSTOMREQUEST, 'POST');
             curl_setopt($chUpdatedIntent, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($chUpdatedIntent, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($chUpdatedIntent, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
             curl_setopt($chUpdatedIntent, CURLOPT_POSTFIELDS, json_encode( (object)array('text' => $example) ) );
             curl_setopt($chUpdatedIntent, CURLOPT_USERPWD, "$this->username:$this->password");
@@ -285,6 +290,7 @@ class Faq extends My_Controller
             $chDialogIntent = curl_init();
             curl_setopt($chDialogIntent, CURLOPT_URL, $dialogExistURL);
             curl_setopt($chDialogIntent, CURLOPT_CUSTOMREQUEST, 'GET');
+            curl_setopt($chDialogIntent, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($chDialogIntent, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($chDialogIntent, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
             curl_setopt($chDialogIntent, CURLOPT_USERPWD, "$this->username:$this->password");
@@ -317,6 +323,7 @@ class Faq extends My_Controller
             curl_setopt($ch2, CURLOPT_URL, $dialogURL);
             curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch2, CURLOPT_POST, true);
+            curl_setopt($ch2, CURLOPT_SSL_VERIFYPEER, false);
             curl_setopt($ch2, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
             curl_setopt($ch2, CURLOPT_POSTFIELDS, $params2);
             curl_setopt($ch2, CURLOPT_USERPWD, "$this->username:$this->password");
@@ -337,6 +344,7 @@ class Faq extends My_Controller
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
         curl_setopt($ch, CURLOPT_USERPWD, "$this->username:$this->password");
         $result = curl_exec($ch);
