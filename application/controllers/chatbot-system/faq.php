@@ -304,10 +304,11 @@ class Faq extends My_Controller
 
                 $dialogURL='https://gateway.watsonplatform.net/assistant/api/v1/workspaces/'.$this->workspace.'/dialog_nodes/'.$dialog_node.'?version=2018-02-16';
 
-                $output = $dialogExists->output->text->values;
+                $output = isset($dialogExists->output->text->values)?$dialogExists->output->text->values: array($dialogExists->output->text);
+
                 array_push($output, $post['answer']);
 
-                $output = (object)array('text' => (object)array('values' => $output, 'selection_policy' => 'sequential') );//this is the answer
+                $output = (object)array('text' => (object)array('values' => $output) );//this is the answer
 
             }
 
@@ -318,6 +319,8 @@ class Faq extends My_Controller
                 'output' => $output,
                 'title' => $dialog_node
             ) );
+
+
 
             $ch2 = curl_init();
             curl_setopt($ch2, CURLOPT_URL, $dialogURL);
