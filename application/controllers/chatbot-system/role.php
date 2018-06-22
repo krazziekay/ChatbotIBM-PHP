@@ -15,7 +15,7 @@ class Role extends My_Controller
     public function index()
     {
         $this->data['sub_module_name'] = 'Role List';
-        $this->data['rows'] = $this->role->get('', ['role_type' => 'Backend']);
+        $this->data['rows'] = $this->role->get();
         $this->data['body'] = BACKENDFOLDER.'/role/_list';
         $this->render();
     }
@@ -50,7 +50,11 @@ class Role extends My_Controller
     public function delete()
     {
         $id = segment(4);
-        $res = $this->rolemodule->delete(array('id' => $id));
+        if($id == 1){
+            $res = set_flash('msg', 'Superadministrator cannot be deleted');
+            redirect(BACKENDFOLDER.'/role');
+        }
+        $res = $this->role->delete(array('id' => $id));
 
         $res ? set_flash('msg', 'Data deleted') : set_flash('msg', 'Data could not be deleted');
 

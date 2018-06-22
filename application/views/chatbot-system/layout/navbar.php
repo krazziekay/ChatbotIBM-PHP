@@ -17,24 +17,29 @@
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <?php if($user_id == 1){?>
-                <li class="treeview active">
+            <?php if($user_id == 1){
+                if(segment(2) == 'role' || segment(2) == 'rolemodule' || segment(2) == 'user'){
+                    $class="treeview active";
+                }else{
+                    $class="treeview";
+                }?>
+                <li class="<?php echo $class?>">
                     <a href="#">
                         <i class="fa fa-cogs"></i><span>Settings</span>
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li>
+                        <li class="<?php echo segment(2) == 'role' ? 'active' : '' ?>">
                             <a href="<?php echo base_url(BACKENDFOLDER.'/role') ?>">
                                 <i class="fa fa-circle-o"></i> Role Manager
                             </a>
                         </li>
-                        <li class="active">
+                        <li class="<?php echo segment(2) == 'rolemodule' ? 'active' : '' ?>">
                             <a href="<?php echo base_url(BACKENDFOLDER.'/rolemodule')?>">
                                 <i class="fa fa-circle-o"></i> Role Module Manager
                             </a>
                         </li>
-                        <li>
+                        <li class="<?php echo segment(2) == 'user' ? 'active' : '' ?>">
                             <a href="<?php echo base_url(BACKENDFOLDER.'/user')?>">
                                 <i class="fa fa-circle-o"></i> Users
                             </a>
@@ -42,18 +47,18 @@
                     </ul>
                 </li>
             <?php }?>
-            <li>
+            <li class="<?php echo segment(2) == 'category' ? 'active' : '' ?>">
                 <a href="<?php echo base_url(BACKENDFOLDER.'/category')?>">
                     <i class="fa fa-cogs"></i> <span>Keywords</span>
                 </a>
             </li>
-            <li>
+            <li class="<?php echo segment(2) == 'faq' ? 'active' : '' ?>">
                 <a href="<?php echo base_url(BACKENDFOLDER.'/faq')?>">
                     <i class="fa fa-files-o"></i> <span>FAQ</span>
                 </a>
             </li>
-            <li>
-                <a href="<?php echo base_url(BACKENDFOLDER.'/faq/unanswered')?>">
+            <li class="<?php echo segment(2) == 'unanswered' ? 'active' : '' ?>">
+                <a href="<?php echo base_url(BACKENDFOLDER.'/unanswered')?>">
                     <i class="fa fa-files-o"></i> <span>Unanswered Questions</span>
                 </a>
             </li>

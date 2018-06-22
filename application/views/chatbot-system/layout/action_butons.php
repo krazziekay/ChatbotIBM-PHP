@@ -34,7 +34,7 @@ if ($count == 2 || $count == 3) {
             $deleteUrl = '';
             $backUrl = '';
             ?>
-            <?php if ($this->header['page_name'] != 'role' && $this->header['page_name'] != 'module' && $this->header['page_name'] != 'user' && $this->header['page_name'] != 'form_fields' && $this->header['page_name'] != 'form_data') { ?>
+            <?php if ($roleId = 1) { ?>
                 <?php
                     if(strpos( ( isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]",  "create" ) === false) {
                 ?>
@@ -45,7 +45,7 @@ if ($count == 2 || $count == 3) {
                     <?php }
                 ?>
             <?php } ?>
-            <?php if ($this->header['page_name'] != 'role' && $this->header['page_name'] != 'user' && $this->header['page_name'] != 'form_data') { ?>
+            <?php if ($roleId = 1) { ?>
                 
             <?php } ?>
         <?php }

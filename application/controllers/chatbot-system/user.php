@@ -19,7 +19,7 @@ class User extends My_Controller
     public function index()
     {
         $this->data['sub_module_name'] = 'User List';
-        $query = "SELECT u.* FROM tbl_user u JOIN tbl_role r ON r.id = u.role_id WHERE u.user_type = 'Backend' ";
+        $query = "SELECT u.* FROM tbl_user u JOIN tbl_role r ON r.id = u.role_id ";
         $this->data['users'] = $this->user->query($query);
         $this->data['body'] = BACKENDFOLDER.'/user/_list';
         $this->render();
@@ -27,7 +27,7 @@ class User extends My_Controller
 
     public function create()
     {
-        $this->data['user_roles'] = $this->role->get('', array('role_type' => 'Backend'));
+        $this->data['user_roles'] = $this->role->get();
         $id = segment(4);
         if($_POST) {
             $post = $_POST;

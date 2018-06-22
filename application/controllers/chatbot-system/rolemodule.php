@@ -17,7 +17,7 @@ class Rolemodule extends My_Controller
 
     public function index()
     {
-        $this->data['roles'] = $this->role->get('', array('id !=' => 1, 'role_type' => 'Backend'));
+        $this->data['roles'] = $this->role->get('', array('id !=' => 1));
         $this->data['modules'] = $this->module->get('', array('parent_id' => 0));
         $temp_saved_modules = false;
         $temp_saved_module_permissions = false;
