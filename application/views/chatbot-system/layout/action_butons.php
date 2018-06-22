@@ -35,14 +35,15 @@ if ($count == 2 || $count == 3) {
             $backUrl = '';
             ?>
             <?php if ($this->header['page_name'] != 'role' && $this->header['page_name'] != 'module' && $this->header['page_name'] != 'user' && $this->header['page_name'] != 'form_fields' && $this->header['page_name'] != 'form_data') { ?>
-                <a href="javascript:void(0);" rel="<?php echo $activeStatusUrl ?>" class="btn btn-success btn-xs"
-                   id="activeIcon">
-                    <i class="fa fa-circle fa-fw"></i> Active
-                </a>
-                <a href="javascript:void(0);" rel="<?php echo $inactiveStatusUrl ?>" class="btn btn-info btn-xs"
-                   id="inactiveIcon">
-                    <i class="fa fa-circle-o fa-fw"></i> Inactive
-                </a>
+                <?php
+                    if(strpos( ( isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]",  "create" ) === false) {
+                ?>
+                        <a href="<?php echo (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]/create";?>" class="btn btn-success btn-xs">
+                            <i class="fa fa-plus fa-fw"></i> Add
+                        </a>
+
+                    <?php }
+                ?>
             <?php } ?>
             <?php if ($this->header['page_name'] != 'role' && $this->header['page_name'] != 'user' && $this->header['page_name'] != 'form_data') { ?>
                 
@@ -50,29 +51,22 @@ if ($count == 2 || $count == 3) {
         <?php }
         if ($activeModulePermission['delete']) {
         $deleteUrl = base_url(BACKENDFOLDER . '/' . segment(2) . '/delete');?>
-        <a href="javascript:void(0);" rel="<?php echo $deleteUrl ?>" class="btn btn-danger btn-xs"
+            <?php
+            if(strpos( ( isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]",  "create" ) === false) {
+                ?>
+                <a href="javascript:void(0);" rel="<?php echo $deleteUrl ?>" class="btn btn-danger btn-xs"
                    id="deleteIcon">
                     <i class="fa fa-trash fa-fw"></i>
                 </a>
+            <?php }
+            ?>
+
        <?php }
     }
 
     ?>
 
-    <?php if ($show_sort_link) {
-        if ($activeModulePermission['edit']) { ?>
-            <a href="<?php echo base_url(BACKENDFOLDER . '/' . segment(2) . '/sort') ?>" data-toggle="ajaxModal"
-               class="btn btn-info btn-xs">
-                <i class="fa fa-sort fa-fw"></i> Sort
-            </a>
-        <?php }
-    }
-    ?>
-    <?php if (!empty($backUrl)) { ?>
-        <a href="<?php echo $backUrl ?>" class="btn btn-success btn-xs">
-            <i class="fa fa-backward fa-fw"></i>
-        </a>
-    <?php } ?>
+
 <?php } ?>
 <?php if(isset($this->header['page_name']) && $this->header['page_name'] == 'role') { ?>
     <a title="Permission" href="<?php echo base_url(BACKENDFOLDER . '/rolemodule/') ?>" class="btn btn-primary btn-xs permissionIcon">

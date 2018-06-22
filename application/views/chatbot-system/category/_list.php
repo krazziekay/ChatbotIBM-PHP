@@ -1,6 +1,6 @@
 <form action="" method="post" id="gridForm" autocomplete="off">
     <table class="table table-bordered table-hover list-datatable">
-        <tfoot id="table-search-row">
+        <tfoot>
         <tr>
             <th></th>
             <th></th>
