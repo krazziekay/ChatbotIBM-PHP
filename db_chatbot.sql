@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 22, 2018 at 10:49 AM
+-- Generation Time: Jun 23, 2018 at 03:22 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 5.6.36
 
@@ -41,7 +41,8 @@ CREATE TABLE `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('caa0bcd91e65b8afb07a4e8fb94cb0c2', '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 1529657343, 'a:6:{s:9:\"user_data\";s:0:\"\";s:8:\"username\";s:10:\"superadmin\";s:7:\"user_id\";s:1:\"7\";s:7:\"role_id\";s:1:\"1\";s:5:\"email\";s:21:\"rshrestha92@gmail.com\";s:4:\"name\";s:16:\"Rojeena Shrestha\";}');
+('6da82f983b09b7b68ee177466e986dd5', '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 1529716290, 'a:6:{s:9:\"user_data\";s:0:\"\";s:8:\"username\";s:10:\"superadmin\";s:7:\"user_id\";s:1:\"7\";s:7:\"role_id\";s:1:\"1\";s:5:\"email\";s:21:\"rshrestha92@gmail.com\";s:4:\"name\";s:16:\"Rojeena Shrestha\";}'),
+('a8c85d635e22c315a709ec4eedc8ea99', '::1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 1529716929, 'a:6:{s:9:\"user_data\";s:0:\"\";s:8:\"username\";s:5:\"staff\";s:7:\"user_id\";s:1:\"2\";s:7:\"role_id\";s:1:\"2\";s:5:\"email\";s:15:\"staff@staff.com\";s:4:\"name\";s:5:\"Staff\";}');
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,10 @@ CREATE TABLE `tbl_faq` (
 
 INSERT INTO `tbl_faq` (`id`, `question`, `category_id`, `answer`, `status`, `created_by`, `created_on`, `updated_by`, `updated_on`) VALUES
 (51, 'How do I login in to my VU system?', '8', '<p>In order to login, you need a student ID and a password. If you are a new student or lost your password, please contact the VU administration at 0442023402</p>\n', 'Active', NULL, NULL, 7, 1529656827),
-(52, 'What is the address of the Victoria University?', '9', 'The location is 160 Sussex St, Sydney NSW 2000.', 'Active', 7, 1529656942, 7, 1529657000);
+(52, 'What is the address of the Victoria University?', '9', 'The location is 160 Sussex St, Sydney NSW 2000.', 'Active', 7, 1529656942, 7, 1529657000),
+(53, 'Which Unit to study?', NULL, NULL, 'Active', NULL, NULL, NULL, NULL),
+(54, 'Which is the nearest address to the college location', '9', '<p>Darling harbour</p>\n', 'Active', 7, 1529660636, 7, 1529660636),
+(55, 'Where to login', '8', '<p>to the VU website</p>\n', 'Active', 7, 1529661048, 7, 1529661048);
 
 -- --------------------------------------------------------
 
@@ -117,7 +121,7 @@ INSERT INTO `tbl_module` (`id`, `name`, `slug`, `priority`, `parent_id`, `update
 (20, 'Users', 'user', 0, 0, NULL, NULL, 'No'),
 (64, 'FAQ', 'faq', 0, 0, NULL, NULL, 'Yes'),
 (94, 'Role Manager', 'role', 0, 9, NULL, NULL, 'Yes'),
-(97, 'Unanswered Question', '', 0, 0, NULL, NULL, 'Yes');
+(97, 'Unanswered Question', 'unanswered', 0, 0, NULL, NULL, 'Yes');
 
 -- --------------------------------------------------------
 
@@ -130,17 +134,16 @@ CREATE TABLE `tbl_role` (
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci,
   `updated_by` int(11) DEFAULT NULL,
-  `updated_on` int(11) DEFAULT NULL,
-  `role_type` enum('Backend','Frontend') COLLATE utf8_unicode_ci DEFAULT NULL
+  `updated_on` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tbl_role`
 --
 
-INSERT INTO `tbl_role` (`id`, `name`, `description`, `updated_by`, `updated_on`, `role_type`) VALUES
-(1, 'Super Administrator', 'Super Administrator', NULL, NULL, 'Backend'),
-(2, 'Staff', '<p>Staff</p>\r\n', NULL, NULL, 'Backend');
+INSERT INTO `tbl_role` (`id`, `name`, `description`, `updated_by`, `updated_on`) VALUES
+(1, 'Super Administrator', 'Super Administrator', NULL, NULL),
+(2, 'Staff', '<p>Staff</p>\r\n', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -160,9 +163,9 @@ CREATE TABLE `tbl_role_module` (
 --
 
 INSERT INTO `tbl_role_module` (`id`, `module_id`, `role_id`, `permission`) VALUES
-(10, 5, 2, '1110'),
-(11, 64, 2, '1110'),
-(12, 97, 2, '0100');
+(31, 5, 2, '1110'),
+(32, 64, 2, '1110'),
+(33, 97, 2, '1011');
 
 -- --------------------------------------------------------
 
@@ -248,7 +251,7 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT for table `tbl_faq`
 --
 ALTER TABLE `tbl_faq`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `tbl_module`
@@ -266,7 +269,7 @@ ALTER TABLE `tbl_role`
 -- AUTO_INCREMENT for table `tbl_role_module`
 --
 ALTER TABLE `tbl_role_module`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`
