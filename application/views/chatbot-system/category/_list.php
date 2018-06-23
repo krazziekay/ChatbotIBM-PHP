@@ -1,18 +1,10 @@
 <form action="" method="post" id="gridForm" autocomplete="off">
     <table class="table table-bordered table-hover list-datatable">
-        <tfoot>
-        <tr>
-            <th></th>
-            <th></th>
-            <th>Keyword</th>
-            <th></th>
-        </tr>
-        </tfoot>
         <thead>
         <tr>
             <th>SN</th>
             <th><input type="checkbox" name="selectAll" value="selectAll" class="selectAll" /></th>
-            <th>Category</th>
+            <th>Keywords</th>
             <th>Action</th>
         </tr>
         </thead>

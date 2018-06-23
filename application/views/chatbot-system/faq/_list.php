@@ -1,12 +1,5 @@
 <form action="" method="post" id="gridForm" autocomplete="off">
     <table class="table table-bordered table-hover list-datatable">
-    <tfoot>
-        <tr>
-            <th></th>
-            <th></th>
-            <th>Questions</th>
-            <th></th>
-        </tr>
     </tfoot>
     <thead>
         <tr>

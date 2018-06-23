@@ -124,7 +124,7 @@
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
         </div>
-        <strong>Copyright &copy; <?php echo date('Y') ?> <a href="<?php echo base_url() ?>"><?php echo SITENAME ?></a>.</strong> All rights reserved. Powered By: <a href="http://localhost/kbic/" target="_blank">Amnil Technologies Pvt. Ltd.</a>
+        <strong>Copyright &copy; <?php echo date('Y') ?> <a href="<?php echo base_url() ?>"><?php echo SITENAME ?></a>.</strong> All rights reserved.
     </footer>
 </div>
 

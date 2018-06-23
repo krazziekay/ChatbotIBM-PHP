@@ -1,15 +1,5 @@
 <form action="" method="post" id="gridForm" autocomplete="off">
     <table class="table table-bordered table-hover list-datatable">
-        <tfoot id="table-search-row">
-        <tr>
-            <th></th>
-            <th></th>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th></th>
-        </tr>
-        </tfoot>
         <thead>
         <tr>
             <th>SN</th>
