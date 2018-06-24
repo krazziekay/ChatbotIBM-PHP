@@ -4,7 +4,6 @@
     <thead>
         <tr>
             <th>SN</th>
-            <th><input type="checkbox" name="selectAll" value="selectAll" class="selectAll" /></th>
             <th>Questions</th>
             <th>Action</th>
         </tr>
@@ -14,7 +13,6 @@
         <?php foreach ($faqs as $row) : ?>
             <tr>
                 <td><?php echo $serial_number; $serial_number++; ?></td>
-                <td><input type="checkbox" name="selected[]" value="<?php echo $row->id; ?>" class="rowCheckBox" /></td>
                 <td><?php echo $row->question ?></td>
                 <td>
                     <?php
@@ -31,7 +29,6 @@
         <?php endforeach ?>
     <?php else : ?>
         <tr>
-            <td>No Data</td>
             <td>No Data</td>
             <td>No Data</td>
             <td>No Data</td>

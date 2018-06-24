@@ -19,7 +19,7 @@ class Unanswered extends My_Controller
         $this->load->model('faq_model', 'faq');
         $this->load->model('category_model', 'category');
         $this->data['module_name'] = 'Faq Manager';
-        $this->data['show_add_link'] = true;
+        $this->data['show_add_link'] = false;
         $this->data['show_sort_link'] = true;
         $this->header['page_name']	= $this->router->fetch_class();
     }

@@ -1,9 +1,6 @@
 <aside class="main-sidebar">
     <section class="sidebar">
         <div class="user-panel">
-            <div class="pull-left image">
-                <img src="<?php echo base_url('assets/'.BACKENDFOLDER.'//img/default-user.png') ?>" class="img-circle" alt="<?php echo get_userdata('name') ?>" />
-            </div>
             <div class="pull-left info">
                 <p><?php echo get_userdata('name') ?></p>
 

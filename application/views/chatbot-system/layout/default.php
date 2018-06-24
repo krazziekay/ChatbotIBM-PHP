@@ -49,7 +49,6 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="<?php echo base_url('assets/'.BACKENDFOLDER.'/img/default-user.png') ?>" class="user-image" alt="<?php echo get_userdata('name') ?>" width="160" height="160"/>
                             <span class="hidden-xs"><?php echo get_userdata('name') ?></span>
                         </a>
                         <ul class="dropdown-menu">

@@ -54,10 +54,10 @@ if ($count == 2 || $count == 3) {
             <?php
             if(strpos( ( isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]",  "create" ) === false) {
                 ?>
-                <a href="javascript:void(0);" rel="<?php echo $deleteUrl ?>" class="btn btn-danger btn-xs"
+                <!--<a href="javascript:void(0);" rel="<?php echo $deleteUrl ?>" class="btn btn-danger btn-xs"
                    id="deleteIcon">
                     <i class="fa fa-trash fa-fw"></i>
-                </a>
+                </a>-->
             <?php }
             ?>
 

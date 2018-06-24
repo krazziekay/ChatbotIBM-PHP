@@ -3,7 +3,7 @@
         <thead>
         <tr>
             <th>SN</th>
-            <th><input type="checkbox" name="selectAll" value="selectAll" class="selectAll" /></th>
+            <!--<th><input type="checkbox" name="selectAll" value="selectAll" class="selectAll" /></th>-->
             <th>Keywords</th>
             <th>Action</th>
         </tr>
@@ -14,7 +14,7 @@
                 <tr>
                     <td><?php echo $serial_number;
                         $serial_number++; ?></td>
-                    <td><input type="checkbox" name="selected[]" value="<?php echo $category->id; ?>" class="rowCheckBox" /></td>
+                    <!--<td><input type="checkbox" name="selected[]" value="<?php echo $category->id; ?>" class="rowCheckBox" /></td>-->
                     <td><?php echo $category->name ?></td>
                     <td>
                         <?php
@@ -32,7 +32,7 @@
         <?php else : ?>
             <tr>
                 <td>No Data</td>
-                <td>No Data</td>
+                <!--<td>No Data</td>-->
                 <td>No Data</td>
                 <td>No Data</td>
             </tr>
